@@ -6,6 +6,12 @@ registerApplication({
   activeWhen: (location) => location.pathname.includes("/"),
 });
 
+registerApplication({
+  name: "@home-hub/react-dashboard",
+  app: () => System.import<LifeCycles>("@home-hub/react-dashboard"),
+  activeWhen: (location) => location.pathname.includes("/"),
+});
+
 start({
   urlRerouteOnly: true,
 });
