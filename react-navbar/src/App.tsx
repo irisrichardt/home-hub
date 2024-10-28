@@ -25,7 +25,6 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import PersonIcon from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
 
-import LightControl from "./LightControl";
 import { useState } from "react";
 
 export default function App() {
@@ -133,40 +132,41 @@ export default function App() {
 
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" sx={{ backgroundColor: "#6474b4" }}>
-          <Toolbar>
-            <MenuItem onClick={toggleDrawer(true)}>
-              <img src={HomeHubLogo} style={{ width: "176px" }} />
-            </MenuItem>
-            <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ display: { xs: "none", md: "flex" } }}>
-              <MenuItem onClick={handleProfileMenuOpen}>
-                <IconButton
-                  size="large"
-                  edge="end"
-                  aria-label="account of current user"
-                  aria-haspopup="true"
-                  onClick={() => {}}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
+      <div id="single-spa-application:@home-hub/react-navbar">
+        <Box sx={{ flexGrow: 1 }}>
+          <AppBar position="static" sx={{ backgroundColor: "#143646" }}>
+            <Toolbar>
+              <MenuItem onClick={toggleDrawer(true)}>
+                <img src={HomeHubLogo} style={{ width: "176px" }} />
               </MenuItem>
-              <IconButton size="large" color="inherit">
-                <Badge color="error">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
-            </Box>
-          </Toolbar>
-        </AppBar>
-        <Drawer open={open} onClose={toggleDrawer(false)}>
-          {DrawerList}
-        </Drawer>
-        {renderMenu}
-      </Box>
-      {/* <LightControl /> */}
+              <Box sx={{ flexGrow: 1 }} />
+              <Box sx={{ display: "flex" }}>
+                <MenuItem onClick={handleProfileMenuOpen}>
+                  <IconButton
+                    size="large"
+                    edge="end"
+                    aria-label="account of current user"
+                    aria-haspopup="true"
+                    onClick={() => {}}
+                    color="inherit"
+                  >
+                    <AccountCircle />
+                  </IconButton>
+                </MenuItem>
+                <IconButton size="large" color="inherit">
+                  <Badge color="error">
+                    <NotificationsIcon />
+                  </Badge>
+                </IconButton>
+              </Box>
+            </Toolbar>
+          </AppBar>
+          <Drawer open={open} onClose={toggleDrawer(false)}>
+            {DrawerList}
+          </Drawer>
+          {renderMenu}
+        </Box>
+      </div>
     </>
   );
 }
