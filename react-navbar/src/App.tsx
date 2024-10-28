@@ -15,7 +15,7 @@ import {
   Toolbar,
 } from "@mui/material";
 
-import HomeHubLogo from "./assets/home-hub.png";
+import HomeHubLogo from "./assets/home-hub-logo.png";
 import { AccountCircle } from "@mui/icons-material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
@@ -24,6 +24,7 @@ import LockIcon from "@mui/icons-material/Lock";
 import LogoutIcon from "@mui/icons-material/Logout";
 import PersonIcon from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
+import RoofingRoundedIcon from "@mui/icons-material/RoofingRounded";
 
 import { useState } from "react";
 
@@ -137,7 +138,16 @@ export default function App() {
           <AppBar position="static" sx={{ backgroundColor: "#143646" }}>
             <Toolbar>
               <MenuItem onClick={toggleDrawer(true)}>
-                <img src={HomeHubLogo} style={{ width: "176px" }} />
+                <RoofingRoundedIcon
+                  sx={{ color: "white", marginRight: "8px" }}
+                />
+                <img
+                  src={HomeHubLogo}
+                  style={{
+                    width: "140px",
+                    filter: "brightness(0) invert(1)",
+                  }}
+                />
               </MenuItem>
               <Box sx={{ flexGrow: 1 }} />
               <Box sx={{ display: "flex" }}>
