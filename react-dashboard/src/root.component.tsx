@@ -3,8 +3,24 @@ import HeroCard from "./components/HeroCard";
 import UsersCard from "./components/UsersCard";
 import WaterCard from "./components/WaterCard";
 import EnergyCard from "./components/EnergyCard";
+import { useEffect, useState } from "react";
 
 export default function Root() {
+  const [authInfo, setAuthInfo] = useState<
+    { email: string; password: string } | undefined
+  >();
+
+  useEffect(() => {
+    const auth = localStorage.getItem("auth");
+
+    if (!auth) {
+      return location.replace("/");
+    }
+    setAuthInfo(JSON.parse(auth));
+
+    console.log("AuthInfo: ", authInfo);
+  }, []);
+
   return (
     <>
       <div id="single-spa-application:@home-hub/react-dashboard">

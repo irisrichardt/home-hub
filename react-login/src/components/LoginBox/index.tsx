@@ -8,7 +8,7 @@ const LoginBox = () => {
       <Box
         sx={{
           bgcolor: "#F5F5F5",
-          height: "65vh",
+          minHeight: "70vh",
           mt: "10vh",
           borderRadius: "24px",
           display: "flex",
@@ -22,8 +22,10 @@ const LoginBox = () => {
           width={140}
           style={{ marginTop: 36, marginBottom: 36 }}
         />
-        <Typography>Login</Typography>
-        <Typography>Insira seus dados para acessar o Hub</Typography>
+        <Typography sx={{ fontSize: 18, fontWeight: 700 }}>Login</Typography>
+        <Typography sx={{ fontSize: 14, fontWeight: 400 }}>
+          Insira seus dados para acessar o Hub
+        </Typography>
         <LoginForm />
       </Box>
     </Container>

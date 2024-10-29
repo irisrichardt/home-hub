@@ -26,7 +26,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
 import RoofingRoundedIcon from "@mui/icons-material/RoofingRounded";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function App() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -36,6 +36,23 @@ export default function App() {
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
+  };
+
+  const [authInfo, setAuthInfo] = useState<
+    { email: string; password: string } | undefined
+  >();
+
+  useEffect(() => {
+    const auth = localStorage.getItem("auth");
+    if (!auth) {
+      return location.replace("/");
+    }
+    setAuthInfo(JSON.parse(auth));
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("auth");
+    location.replace("/");
   };
 
   const DrawerList = (
@@ -101,7 +118,7 @@ export default function App() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Usuário</MenuItem>
+      <MenuItem onClick={handleMenuClose}>{authInfo?.email}</MenuItem>
       <Divider />
       <ListItem disablePadding onClick={handleMenuClose}>
         <ListItemButton>
@@ -120,7 +137,7 @@ export default function App() {
         </ListItemButton>
       </ListItem>
       <Divider />
-      <ListItem disablePadding onClick={handleMenuClose}>
+      <ListItem disablePadding onClick={handleLogout}>
         <ListItemButton>
           <ListItemIcon>
             <LogoutIcon />

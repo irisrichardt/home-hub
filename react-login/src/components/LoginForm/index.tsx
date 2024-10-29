@@ -23,7 +23,12 @@ const LoginForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
-  const onSubmit = (data: FormValues) => console.log(data);
+
+  const onSubmit = (data: FormValues) => {
+    const authId = data.email.replace("@", "").replace(".", "").codePointAt(1);
+    localStorage.setItem("auth", JSON.stringify(data));
+    location.replace(`/dashboard/${authId}/`);
+  };
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -43,7 +48,7 @@ const LoginForm = () => {
         id="email"
         label="Email"
         variant="standard"
-        sx={{ marginTop: "16px", marginX: "16px" }}
+        sx={{ marginTop: "16px", marginX: "32px" }}
         error={!!errors.email}
         helperText={errors.email?.message}
         {...register("email", {
@@ -56,7 +61,7 @@ const LoginForm = () => {
         label="Senha"
         variant="standard"
         type={showPassword ? "text" : "password"}
-        sx={{ marginTop: "16px", marginX: "16px" }}
+        sx={{ marginTop: "16px", marginX: "32px" }}
         error={!!errors.password}
         helperText={errors.password?.message}
         {...register("password", { required: "Senha obrigatória." })}
@@ -80,8 +85,11 @@ const LoginForm = () => {
         variant="contained"
         sx={{
           backgroundColor: "#236284",
-          marginTop: "30px",
-          marginX: "16px",
+          marginTop: "50px",
+          marginX: "32px",
+          "&:hover": {
+            backgroundColor: "#072c3c",
+          },
         }}
         onClick={handleSubmit(onSubmit)}
       >
