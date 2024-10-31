@@ -28,7 +28,11 @@ import RoofingRoundedIcon from "@mui/icons-material/RoofingRounded";
 
 import { useEffect, useState } from "react";
 
-import { AuthInfo, checkIsAuthenticated } from "../../utils/src/home-hub-utils";
+import {
+  AuthInfo,
+  checkIsAuthenticated,
+  logoutFunction,
+} from "../../utils/src/home-hub-utils";
 
 export default function App() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -50,11 +54,6 @@ export default function App() {
     }
     setAuthInfo(authObj);
   }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem("auth");
-    location.replace("/");
-  };
 
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
@@ -138,7 +137,7 @@ export default function App() {
         </ListItemButton>
       </ListItem>
       <Divider />
-      <ListItem disablePadding onClick={handleLogout}>
+      <ListItem disablePadding onClick={logoutFunction}>
         <ListItemButton>
           <ListItemIcon>
             <LogoutIcon />
