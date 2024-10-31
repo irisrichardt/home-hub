@@ -28,8 +28,12 @@ import RoofingRoundedIcon from "@mui/icons-material/RoofingRounded";
 
 import { useEffect, useState } from "react";
 
+import { AuthInfo, checkIsAuthenticated } from "../../utils/src/home-hub-utils";
+
 export default function App() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [authInfo, setAuthInfo] = useState<AuthInfo | undefined>();
+
   const isMenuOpen = Boolean(anchorEl);
 
   const [open, setOpen] = useState(false);
@@ -38,16 +42,13 @@ export default function App() {
     setOpen(newOpen);
   };
 
-  const [authInfo, setAuthInfo] = useState<
-    { email: string; password: string } | undefined
-  >();
-
   useEffect(() => {
-    const auth = localStorage.getItem("auth");
-    if (!auth) {
+    const { isAuthenticated, authInfo: authObj } = checkIsAuthenticated();
+
+    if (!isAuthenticated) {
       return location.replace("/");
     }
-    setAuthInfo(JSON.parse(auth));
+    setAuthInfo(authObj);
   }, []);
 
   const handleLogout = () => {

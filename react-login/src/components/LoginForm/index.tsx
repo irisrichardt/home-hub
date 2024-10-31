@@ -12,6 +12,8 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 
+import { loginFunction } from "../../../../utils/src/home-hub-utils";
+
 type FormValues = {
   email: string;
   password: string;
@@ -24,11 +26,7 @@ const LoginForm = () => {
     formState: { errors },
   } = useForm<FormValues>();
 
-  const onSubmit = (data: FormValues) => {
-    const authId = data.email.replace("@", "").replace(".", "").codePointAt(1);
-    localStorage.setItem("auth", JSON.stringify(data));
-    location.replace(`/dashboard/${authId}/`);
-  };
+  const onSubmit = (data: FormValues) => loginFunction(data.email);
 
   const [showPassword, setShowPassword] = useState(false);
 

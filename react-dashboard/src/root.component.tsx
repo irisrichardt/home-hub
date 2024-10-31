@@ -5,20 +5,18 @@ import WaterCard from "./components/WaterCard";
 import EnergyCard from "./components/EnergyCard";
 import { useEffect, useState } from "react";
 
+import { AuthInfo, checkIsAuthenticated } from "../../utils/src/home-hub-utils";
+
 export default function Root() {
-  const [authInfo, setAuthInfo] = useState<
-    { email: string; password: string } | undefined
-  >();
+  const [authInfo, setAuthInfo] = useState<AuthInfo | undefined>();
 
   useEffect(() => {
-    const auth = localStorage.getItem("auth");
+    const { isAuthenticated, authInfo: authObj } = checkIsAuthenticated();
 
-    if (!auth) {
+    if (!isAuthenticated) {
       return location.replace("/");
     }
-    setAuthInfo(JSON.parse(auth));
-
-    console.log("AuthInfo: ", authInfo);
+    setAuthInfo(authObj);
   }, []);
 
   return (
@@ -35,7 +33,7 @@ export default function Root() {
         >
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <HeroCard />
+              <HeroCard email={authInfo?.email} />
             </Grid>
             <Grid item sm={6} xs={12}>
               <UsersCard />
