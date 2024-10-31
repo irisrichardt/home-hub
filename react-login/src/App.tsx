@@ -1,7 +1,10 @@
 import LoginBox from "./components/LoginBox";
 import backgroundImg from "./assets/background.png";
+import { publicApiFunction } from "../../utils/src/home-hub-utils";
 
 export default function Root() {
+  publicApiFunction();
+
   return (
     <>
       <div
