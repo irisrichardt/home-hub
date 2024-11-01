@@ -28,11 +28,7 @@ import RoofingRoundedIcon from "@mui/icons-material/RoofingRounded";
 
 import { useEffect, useState } from "react";
 
-import {
-  AuthInfo,
-  checkIsAuthenticated,
-  logoutFunction,
-} from "../../utils/src/home-hub-utils";
+import { AuthInfo, checkIsAuthenticated, logoutFunction } from "../../utils/src/home-hub-utils";
 
 export default function App() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -55,10 +51,14 @@ export default function App() {
     setAuthInfo(authObj);
   }, []);
 
+  const handleEditProfile = () => {
+    return location.replace(`/dashboard/${authInfo.authId}/edit-profile`);
+  };
+
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
       <List>
-        <ListItem disablePadding>
+        <ListItem disablePadding onClick={() => location.replace(`/dashboard/${authInfo.authId}/`)}>
           <ListItemButton>
             <ListItemIcon>
               <SpaceDashboardIcon />
@@ -128,7 +128,7 @@ export default function App() {
           <ListItemText primary={"Configurações"} />
         </ListItemButton>
       </ListItem>
-      <ListItem disablePadding onClick={handleMenuClose}>
+      <ListItem disablePadding onClick={handleEditProfile}>
         <ListItemButton>
           <ListItemIcon>
             <PersonIcon />
@@ -155,9 +155,7 @@ export default function App() {
           <AppBar position="static" sx={{ backgroundColor: "#143646" }}>
             <Toolbar>
               <MenuItem onClick={toggleDrawer(true)}>
-                <RoofingRoundedIcon
-                  sx={{ color: "white", marginRight: "8px" }}
-                />
+                <RoofingRoundedIcon sx={{ color: "white", marginRight: "8px" }} />
                 <img
                   src={HomeHubLogo}
                   style={{

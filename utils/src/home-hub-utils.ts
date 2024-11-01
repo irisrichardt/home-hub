@@ -27,8 +27,22 @@ export const checkIsAuthenticated = () => {
 
   const authObj: AuthInfo = JSON.parse(auth);
   if (!location.pathname.includes(authObj.authId.toString())) {
+    logoutFunction();
     return { authInfo: undefined, isAuthenticated: false };
   }
 
   return { authInfo: authObj, isAuthenticated: true };
+};
+
+export const editAuthInfo = (data: AuthInfo) => {
+  const auth = JSON.parse(localStorage.getItem("auth"));
+
+  if (!location.pathname.includes(auth.authId.toString())) {
+    alert("Você não tem permissão para editar este usuário");
+    return logoutFunction();
+  }
+
+  localStorage.setItem("auth", JSON.stringify(data));
+  alert("Usuário editado com sucesso");
+  return;
 };
