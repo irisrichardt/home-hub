@@ -1,10 +1,4 @@
-import {
-  Box,
-  Button,
-  TextField,
-  IconButton,
-  InputAdornment,
-} from "@mui/material";
+import { Box, Button, TextField, IconButton, InputAdornment } from "@mui/material";
 
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
@@ -12,7 +6,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 
-import { loginFunction } from "../../../../utils/src/home-hub-utils";
+import { loginFunction } from "@home-hub/react-utils";
 
 type FormValues = {
   email: string;
@@ -68,11 +62,7 @@ const LoginForm = () => {
             endAdornment: (
               <InputAdornment position="end" sx={{ mr: 2 }}>
                 <IconButton onClick={togglePasswordVisibility} edge="end">
-                  {showPassword ? (
-                    <VisibilityIcon fontSize="small" />
-                  ) : (
-                    <VisibilityOffIcon fontSize="small" />
-                  )}
+                  {showPassword ? <VisibilityIcon fontSize="small" /> : <VisibilityOffIcon fontSize="small" />}
                 </IconButton>
               </InputAdornment>
             ),

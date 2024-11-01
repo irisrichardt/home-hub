@@ -1,9 +1,7 @@
 import LoginBox from "./components/LoginBox";
 import backgroundImg from "./assets/background.png";
-import { helloWorld } from "@home-hub/react-utils";
 
 export default function Root() {
-  helloWorld();
   return (
     <>
       <div
