@@ -4,24 +4,24 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import VisaoGeral from "../../assets/visao-geral.png";
 
-import { checkIsAuthenticated } from "@home-hub/react-utils";
+interface HeroCardProps {
+  title: string;
+  subtitle: string;
+}
 
-const { authInfo } = checkIsAuthenticated();
-
-const HeroCard = () => {
+const HeroCard: React.FC<HeroCardProps> = (props) => {
   return (
     <Card sx={{ background: "#FFF3E0" }}>
       <CardContent>
-        <Box display={"flex"} flexDirection={"row"} alignItems={"center"} justifyContent={"space-evenly"}>
+        <Box
+          display={"flex"}
+          flexDirection={"row"}
+          alignItems={"center"}
+          justifyContent={"space-evenly"}
+        >
           <Box>
-            <Typography variant="h5">
-              Olá,{" "}
-              {!!authInfo?.firstName
-                ? `${authInfo?.firstName} ${authInfo?.lastName}`
-                : authInfo.email.split("@")[0].split(/[._]/)[0]}
-              !
-            </Typography>
-            <Typography>Confira as informações da sua casa inteligente!</Typography>
+            <Typography variant="h5">{props.title}</Typography>
+            <Typography>{props.subtitle}</Typography>
           </Box>
           <img src={VisaoGeral} alt="Visão Geral" height={140} />
         </Box>

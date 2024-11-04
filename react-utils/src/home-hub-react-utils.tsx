@@ -17,7 +17,7 @@ export function loginFunction(email: AuthInfo["email"]) {
 export function logoutFunction() {
   const cookies = new Cookies(null, { path: "/" });
   cookies.remove("auth");
-  return location.replace("/");
+  return (window.location.href = "/");
 }
 
 export function checkIsAuthenticated() {

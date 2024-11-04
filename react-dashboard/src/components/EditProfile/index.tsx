@@ -1,7 +1,6 @@
 import { Box, Button, TextField } from "@mui/material";
 
 import { useForm } from "react-hook-form";
-import { useState } from "react";
 
 import { AuthInfo, checkIsAuthenticated, editAuthInfo } from "@home-hub/react-utils";
 
