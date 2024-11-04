@@ -5,6 +5,7 @@ export default function Root() {
   return (
     <>
       <div
+        id="single-spa-application:@home-hub/react-login"
         style={{
           backgroundImage: `url(${backgroundImg})`,
           backgroundSize: 1000,

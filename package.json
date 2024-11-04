@@ -1,0 +1,12 @@
+{
+  "name": "home-hub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+"scripts": {
+  "test": "echo 'No tests specified'",
+  "lint": "eslint ."
+},
+  "author": "Íris Balk",
+  "license": "ISC"
+}

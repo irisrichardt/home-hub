@@ -5,11 +5,11 @@ import WaterCard from "./components/WaterCard";
 import EnergyCard from "./components/EnergyCard";
 import { useEffect, useState } from "react";
 
-import { AuthInfo, checkIsAuthenticated } from "../../utils/src/home-hub-utils";
+import { AuthInfo, checkIsAuthenticated } from "@home-hub/react-utils";
 import EditProfile from "./components/EditProfile";
 
 export default function Root() {
-  const [authInfo, setAuthInfo] = useState<AuthInfo | undefined>();
+  const [authInfo, setAuthInfo] = useState<typeof AuthInfo | undefined>();
 
   useEffect(() => {
     const { isAuthenticated, authInfo: authObj } = checkIsAuthenticated();

@@ -28,11 +28,11 @@ import RoofingRoundedIcon from "@mui/icons-material/RoofingRounded";
 
 import { useEffect, useState } from "react";
 
-import { AuthInfo, checkIsAuthenticated, logoutFunction } from "../../utils/src/home-hub-utils";
+import { AuthInfo, checkIsAuthenticated, logoutFunction } from "@home-hub/react-utils";
 
 export default function App() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [authInfo, setAuthInfo] = useState<AuthInfo | undefined>();
+  const [authInfo, setAuthInfo] = useState<typeof AuthInfo | undefined>();
 
   const isMenuOpen = Boolean(anchorEl);
 
