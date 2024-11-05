@@ -1,8 +1,10 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
-import { Card, CardContent, Stack, Switch, Typography } from "@mui/material";
+import { Card, CardContent, Snackbar, Stack, Switch, Typography } from "@mui/material";
 import AcIcon from "../../assets/ar-condicionado.png";
+
+import { useState } from "react";
 
 const marks = [
   {
@@ -20,6 +22,9 @@ function valuetext(value: number) {
 }
 
 const AcCard = () => {
+  const [ac, setAc] = useState(true);
+  const [isSnackbarVisible, setIsSnackbarVisible] = useState(false);
+
   return (
     <Card sx={{ background: "#F5F5F5" }}>
       <CardContent sx={{ marginX: 5, marginY: 5 }}>
@@ -39,7 +44,14 @@ const AcCard = () => {
         <Box>
           <Stack direction="row" spacing={1} alignItems="center">
             <Typography>Off</Typography>
-            <Switch defaultChecked inputProps={{ "aria-label": "ant design" }} />
+            <Switch
+              defaultChecked
+              inputProps={{ "aria-label": "ant design" }}
+              onClick={() => {
+                setIsSnackbarVisible(true);
+                setAc(!ac);
+              }}
+            />
             <Typography>On</Typography>
           </Stack>
           <Slider
@@ -52,6 +64,14 @@ const AcCard = () => {
           />
         </Box>
       </CardContent>
+      {isSnackbarVisible && (
+        <Snackbar
+          open={isSnackbarVisible}
+          autoHideDuration={2000}
+          onClose={() => setIsSnackbarVisible(false)}
+          message={`Ar-condicionado ${ac ? "ligado" : "desligado"}.`}
+        />
+      )}
     </Card>
   );
 };

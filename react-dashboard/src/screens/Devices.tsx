@@ -2,6 +2,7 @@ import { Box, Grid } from "@mui/material";
 import HeroCard from "../components/HeroCard";
 import AcCard from "../components/AcCard";
 import TableCard from "../components/TableCard";
+import DoorCard from "../components/DoorCard";
 
 const DevicesScreen = () => {
   return (
@@ -26,6 +27,9 @@ const DevicesScreen = () => {
         </Grid>
         <Grid item sm={8} xs={12}>
           <TableCard />
+        </Grid>
+        <Grid item sm={4} xs={12}>
+          <DoorCard />
         </Grid>
       </Grid>
     </Box>

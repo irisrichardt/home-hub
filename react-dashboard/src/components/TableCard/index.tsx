@@ -54,7 +54,7 @@ const TableCard = () => {
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
               <TableHead>
                 <TableRow>
-                  <StyledTableCell>Cômodo</StyledTableCell>
+                  <StyledTableCell align="center">Cômodo</StyledTableCell>
                   <StyledTableCell align="center">Temperatura&nbsp;(ºC)</StyledTableCell>
                   <StyledTableCell align="center">Funcionamento</StyledTableCell>
                   <StyledTableCell align="center">Status</StyledTableCell>
@@ -63,7 +63,7 @@ const TableCard = () => {
               <TableBody>
                 {rows.map((row) => (
                   <StyledTableRow key={row.name}>
-                    <StyledTableCell component="th" scope="row">
+                    <StyledTableCell component="th" scope="row" align="center">
                       {row.name}
                     </StyledTableCell>
                     <StyledTableCell align="center">
