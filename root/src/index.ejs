@@ -25,7 +25,11 @@
         }
       }
     </script>
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js" as="script" />
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js"
+      as="script"
+    />
 
     <% if (isLocal) { %>
     <script type="systemjs-importmap">
@@ -34,7 +38,9 @@
           "@home-hub/root-config": "//localhost:9000/home-hub-root-config.js",
           "@home-hub/react-navbar": "//localhost:8500/home-hub-react-navbar.js",
           "@home-hub/react-dashboard": "//localhost:8501/home-hub-react-dashboard.js",
-          "@home-hub/react-login": "//localhost:8502/home-hub-react-login.js"
+          "@home-hub/react-login": "//localhost:8502/home-hub-react-login.js",
+          "@home-hub/react-parcel": "//localhost:8503/home-hub-react-parcel.js",
+          "@home-hub/vue-demo": "//localhost:8081/home-hub-vue-demo.js"
         }
       }
     </script>
@@ -55,7 +61,10 @@
     <script>
       System.import("@home-hub/root-config");
     </script>
-    <import-map-overrides-full show-when-local-storage="devtools" dev-libs></import-map-overrides-full>
+    <import-map-overrides-full
+      show-when-local-storage="devtools"
+      dev-libs
+    ></import-map-overrides-full>
     <div id="single-spa-application:@home-hub/react-login"></div>
     <div id="single-spa-application:@home-hub/react-navbar"></div>
     <div id="single-spa-application:@home-hub/react-dashboard"></div>

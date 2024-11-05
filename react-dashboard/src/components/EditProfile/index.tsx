@@ -1,8 +1,11 @@
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, Snackbar, TextField } from "@mui/material";
 
 import { useForm } from "react-hook-form";
 
 import { AuthInfo, checkIsAuthenticated, editAuthInfo } from "@home-hub/react-utils";
+
+import Parcel from "single-spa-react/parcel";
+import { useState } from "react";
 
 type FormValues = Omit<typeof AuthInfo, "authId">;
 
@@ -15,7 +18,14 @@ const EditProfile = () => {
     formState: { errors },
   } = useForm<FormValues>({ defaultValues: authInfo });
 
-  const onSubmit = (data: FormValues) => editAuthInfo({ ...data, authId: authInfo.authId });
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [isSnackbarVisible, setIsSnackbarVisible] = useState<boolean>(false);
+
+  const onSubmit = (data: FormValues) => {
+    setIsVisible(false);
+    editAuthInfo({ ...data, authId: authInfo.authId });
+    setIsSnackbarVisible(true);
+  };
 
   return (
     <Box
@@ -68,10 +78,30 @@ const EditProfile = () => {
             backgroundColor: "#072c3c",
           },
         }}
-        onClick={handleSubmit(onSubmit)}
+        onClick={() => setIsVisible(true)}
       >
         Editar perfil
       </Button>
+      {isVisible && (
+        <Parcel
+          config={() => System.import("@home-hub/react-parcel") as any}
+          description="Confirmar as alterações?"
+          isVisible={isVisible}
+          leftBtnFn={() => setIsVisible(false)}
+          leftBtnText="Cancelar"
+          rightBtnFn={handleSubmit(onSubmit)}
+          rightBtnText="Confirmar"
+          title="HomeHub"
+        />
+      )}
+      {isSnackbarVisible && (
+        <Snackbar
+          open={isSnackbarVisible}
+          autoHideDuration={2000}
+          onClose={() => setIsSnackbarVisible(false)}
+          message="Informações alteradas com sucesso!"
+        />
+      )}
     </Box>
   );
 };

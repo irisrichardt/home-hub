@@ -30,9 +30,12 @@ import { useEffect, useState } from "react";
 
 import { AuthInfo, checkIsAuthenticated, logoutFunction } from "@home-hub/react-utils";
 
+import Parcel from "single-spa-react/parcel";
+
 export default function App() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [authInfo, setAuthInfo] = useState<typeof AuthInfo | undefined>();
+  const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const isMenuOpen = Boolean(anchorEl);
 
@@ -53,6 +56,11 @@ export default function App() {
 
   const handleEditProfile = () => {
     return location.replace(`/dashboard/${authInfo.authId}/edit-profile`);
+  };
+
+  const logout = () => {
+    setIsVisible(false);
+    logoutFunction();
   };
 
   const DrawerList = (
@@ -147,7 +155,7 @@ export default function App() {
         </ListItemButton>
       </ListItem>
       <Divider />
-      <ListItem disablePadding onClick={logoutFunction}>
+      <ListItem disablePadding onClick={() => setIsVisible(true)}>
         <ListItemButton>
           <ListItemIcon>
             <LogoutIcon />
@@ -201,6 +209,18 @@ export default function App() {
           </Drawer>
           {renderMenu}
         </Box>
+        {isVisible && (
+          <Parcel
+            config={() => System.import("@home-hub/react-parcel") as any}
+            description="Deseja sair do HomeHub?"
+            isVisible={isVisible}
+            leftBtnFn={() => setIsVisible(false)}
+            leftBtnText="Cancelar"
+            rightBtnFn={logout}
+            rightBtnText="Sair"
+            title="HomeHub"
+          />
+        )}
       </div>
     </>
   );
