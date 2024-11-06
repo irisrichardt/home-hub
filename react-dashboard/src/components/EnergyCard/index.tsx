@@ -43,8 +43,7 @@ const EnergyCard = ({ currentMonthUsage, lastMonthUsage }) => {
           <ArrowDownwardIcon color="success" />
         )}
         <Typography color={isIncreased ? "error" : "success"}>
-          {Math.abs(usageDifference)} kWh {isIncreased ? "mais" : "menos"} que o
-          mês passado
+          {Math.abs(usageDifference)} kWh {isIncreased ? "mais" : "menos"} que o mês passado
         </Typography>
       </Box>
     </Paper>

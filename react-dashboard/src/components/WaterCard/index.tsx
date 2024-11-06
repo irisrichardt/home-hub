@@ -6,7 +6,7 @@ import WaterIcon from "../../assets/water.png";
 
 const WaterCard = () => {
   return (
-    <Card sx={{ background: "#F5F5F5" }}>
+    <Card sx={{ background: "#F5F5F5", width: "100%", height: "100%" }}>
       <CardContent>
         <Box display={"flex"} flexDirection={"column"} alignItems={"center"}>
           <img

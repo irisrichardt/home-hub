@@ -44,7 +44,7 @@ export default {
   padding: 0;
 }
 .property-info li {
-  margin-bottom: 13px;
+  margin-bottom: 12px;
   font-size: 1em;
   color: #555;
 }

@@ -11,7 +11,7 @@ interface HeroCardProps {
 
 const HeroCard: React.FC<HeroCardProps> = (props) => {
   return (
-    <Card sx={{ background: "#FFF3E0" }}>
+    <Card sx={{ background: "#FFF3E0", width: "100%", height: "100%" }}>
       <CardContent>
         <Box
           display={"flex"}

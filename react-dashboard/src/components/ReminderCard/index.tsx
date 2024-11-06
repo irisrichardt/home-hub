@@ -1,26 +1,14 @@
 import { Box, Divider, Typography } from "@mui/material";
 
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import UsersIcons from "../../assets/users.png";
 
-const UsersCard = () => {
+const ReminderCard = () => {
   return (
     <Card sx={{ background: "#F5F5F5", width: "100%", height: "100%" }}>
       <CardContent>
         <Box display={"flex"} alignItems={"center"} flexDirection={"column"}>
-          <img
-            src={UsersIcons}
-            alt="Users Icon"
-            width={60}
-            style={{
-              border: "2px solid #E65100",
-              borderRadius: "12px",
-              marginBottom: "10px",
-            }}
-          />
-          <Typography color={"#E65100"}>Membros da Família</Typography>
+          <Typography color={"#E65100"}>Lembretes</Typography>
         </Box>
         <Box
           display={"flex"}
@@ -28,8 +16,7 @@ const UsersCard = () => {
           justifyContent={"start"}
           sx={{ marginTop: 2 }}
         >
-          <AccountCircleIcon sx={{ color: "#BDBDBD", width: 60 }} />
-          <Typography variant="body2">Usuário 1</Typography>
+          <Typography variant="body2">Ligar para o Harry</Typography>
         </Box>
         <Divider sx={{ color: "#000000" }} style={{ marginTop: 8 }} />
         <Box
@@ -38,8 +25,7 @@ const UsersCard = () => {
           justifyContent={"start"}
           sx={{ marginTop: 1 }}
         >
-          <AccountCircleIcon sx={{ color: "#BDBDBD", width: 60 }} />
-          <Typography variant="body2">Usuário 2</Typography>
+          <Typography variant="body2">Finalizar cursos de microfrontends</Typography>
         </Box>
         <Divider sx={{ color: "#000000" }} style={{ marginTop: 8 }} />
         <Box
@@ -48,11 +34,20 @@ const UsersCard = () => {
           justifyContent={"start"}
           sx={{ marginTop: 1 }}
         >
-          <AccountCircleIcon sx={{ color: "#BDBDBD", width: 60 }} />
-          <Typography variant="body2">Usuário 3</Typography>
+          <Typography variant="body2">Publicar projeto no github</Typography>
         </Box>
+        <Divider sx={{ color: "#000000" }} style={{ marginTop: 8 }} />
+        <Box
+          display={"flex"}
+          alignItems={"center"}
+          justifyContent={"start"}
+          sx={{ marginTop: 1 }}
+        >
+          <Typography variant="body2">Ir no mercado</Typography>
+        </Box>
+        <Divider sx={{ color: "#000000" }} style={{ marginTop: 8 }} />
       </CardContent>
     </Card>
   );
 };
-export default UsersCard;
+export default ReminderCard;

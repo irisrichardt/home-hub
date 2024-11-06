@@ -22,13 +22,13 @@ const DevicesScreen = () => {
             subtitle="Controle seus dispositivos de perto ou de longe!"
           />
         </Grid>
-        <Grid item sm={4} xs={12} display={"inline-grid"}>
+        <Grid item xl={4} lg={4} md={6} sm={12} xs={12}>
           <AcCard />
         </Grid>
-        <Grid item sm={8} xs={12}>
+        <Grid item xl={8} lg={8} md={6} sm={12} xs={12}>
           <TableCard />
         </Grid>
-        <Grid item sm={4} xs={12}>
+        <Grid item xl={4} lg={4} md={12} sm={12} xs={12}>
           <DoorCard />
         </Grid>
       </Grid>

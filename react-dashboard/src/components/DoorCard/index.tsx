@@ -23,7 +23,7 @@ const DoorCard = () => {
 
   return (
     <>
-      <Card sx={{ background: "#F5F5F5" }}>
+      <Card sx={{ background: "#F5F5F5", width: "100%", height: "100%" }}>
         <CardContent sx={{ marginX: 5, marginY: 2 }}>
           <Box display={"flex"} alignItems={"center"} flexDirection={"column"}>
             <Typography color={"#E65100"}>Portas</Typography>
