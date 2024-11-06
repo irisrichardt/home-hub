@@ -4,6 +4,7 @@ import UsersCard from "../components/UsersCard";
 import WaterCard from "../components/WaterCard";
 import EnergyCard from "../components/EnergyCard";
 import { checkIsAuthenticated } from "@home-hub/react-utils";
+import Parcel from "single-spa-react/parcel";
 
 const DashboardScreen: React.FC = () => {
   const { authInfo } = checkIsAuthenticated();
@@ -26,7 +27,9 @@ const DashboardScreen: React.FC = () => {
       p={2}
       sx={{ margin: "auto" }}
     >
-      <Grid container spacing={2}>
+      <Grid container spacing={2} alignItems="stretch">
+        {" "}
+        {/* Ensures all items stretch to the same height */}
         <Grid item xs={12}>
           <HeroCard title={heroCardTitle} subtitle={heroCardSubtitle} />
         </Grid>
@@ -38,6 +41,19 @@ const DashboardScreen: React.FC = () => {
         </Grid>
         <Grid item sm={6} xs={12}>
           <EnergyCard currentMonthUsage={158} lastMonthUsage={100} />
+        </Grid>
+        {/* Ensuring the Parcel also stretches to match height */}
+        <Grid item sm={6} xs={12} sx={{ display: "flex", flexDirection: "column" }}>
+          <Parcel
+            config={() => System.import("@home-hub/vue-demo") as any}
+            size={220}
+            rooms={4}
+            bathrooms={3}
+            parkingSpaces={2}
+            handleError={(err) => console.log(err)}
+            parcelDidMount={() => console.log("Vue parcel mounted")}
+            style={{ height: "100%" }} // Force height to fill available space
+          />
         </Grid>
       </Grid>
     </Box>
